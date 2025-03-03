@@ -2,6 +2,7 @@ import type { MetaFunction } from '@remix-run/node';
 import { useState, useEffect } from 'react';
 import { useLocation } from '@remix-run/react';
 import { ExperienceCard } from '~/components/ExperienceCard';
+import { ProjectCard } from '~/components/ProjectCard';
 
 export const meta: MetaFunction = () => {
   return [
@@ -115,6 +116,98 @@ export default function Index() {
     },
   ];
 
+  const projects = [
+    {
+      title: 'Movie directory',
+      description:
+        'I built this project to learn React.js and Redux while working with real-world data. It connects to TMDB’s API to fetch movie details and is deployed on Netlify for easy access.',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-film"
+        >
+          <rect width="18" height="18" x="3" y="3" rx="2" />
+          <path d="M7 3v18" />
+          <path d="M3 7.5h4" />
+          <path d="M3 12h18" />
+          <path d="M3 16.5h4" />
+          <path d="M17 3v18" />
+          <path d="M17 7.5h4" />
+          <path d="M17 16.5h4" />
+        </svg>
+      ),
+      gradientFrom: '#4B5563', // gray-600
+      gradientTo: '#1F2937', // gray-800
+      skills: ['ReactJS', 'Redux', 'Netlify'],
+      projectUrl: 'https://movdir.netlify.app',
+    },
+    {
+      title: 'Turnidin',
+      description:
+        'Turnidin is a platform that allows users to check the plagiarism score of their papers. It runs on top of the Turnitin no-repository system, providing a seamless experience. Users simply need to top up their balance, upload their paper, and wait for a notification once the plagiarism report is ready.',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-scroll-text"
+        >
+          <path d="M15 12h-5" />
+          <path d="M15 8h-5" />
+          <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+          <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+        </svg>
+      ),
+      gradientFrom: '#3B82F6', // blue-500
+      gradientTo: '#4F46E5', // indigo-600
+      skills: ['Remix', 'PostgreSQL', 'Cloudflare', 'PostHog'],
+      projectUrl: 'https://turnidin.com',
+    },
+    {
+      title: 'Donasikacamata',
+      description:
+        'I created this project to learn project management and explore WordPress while helping my colleague build a website for his project. The website serves as a product showcase while also acting as a portal for individuals seeking donations.',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-glasses"
+        >
+          <circle cx="6" cy="15" r="4" />
+          <circle cx="18" cy="15" r="4" />
+          <path d="M14 15a2 2 0 0 0-2-2 2 2 0 0 0-2 2" />
+          <path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2" />
+          <path d="M21.5 13 19 7c-.7-1.3-1.5-2-3-2" />
+        </svg>
+      ),
+      gradientFrom: '#EAB308', // yellow-500
+      gradientTo: '#CA8A04', // yellow-600
+      skills: ['Wordpress'],
+      projectUrl: 'https://donasikacamata.com',
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
       {/* Navigation */}
@@ -122,9 +215,12 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <a href="#" className="text-xl font-bold">
+              <button
+                onClick={() => scrollToSection('hero')}
+                className="text-xl font-bold"
+              >
                 Galih Andyan
-              </a>
+              </button>
             </div>
 
             {/* Mobile menu button */}
@@ -259,7 +355,10 @@ export default function Index() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 py-20 md:py-32">
+      <section
+        id="hero"
+        className="relative bg-gradient-to-b from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 py-20 md:py-32"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
@@ -280,10 +379,10 @@ export default function Index() {
                 Get in Touch
               </a>
               <a
-                href="#projects"
+                href="#experience"
                 className="px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-medium rounded-lg transition-colors"
               >
-                View My Work
+                View My Experience
               </a>
             </div>
           </div>
@@ -366,145 +465,9 @@ export default function Index() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project 1 */}
-            <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-20 w-20 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  Analytics Dashboard
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  A real-time analytics dashboard for e-commerce businesses,
-                  providing insights on sales, customer behavior, and inventory
-                  management.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    React
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    D3.js
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    Firebase
-                  </span>
-                </div>
-                <a
-                  href="#"
-                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
-
-            {/* Project 2 */}
-            <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-20 w-20 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  TaskFlow Mobile App
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  A productivity app that helps teams manage tasks, track
-                  progress, and collaborate effectively across different
-                  projects.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    React Native
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    Redux
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    Node.js
-                  </span>
-                </div>
-                <a
-                  href="#"
-                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
-
-            {/* Project 3 */}
-            <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden transition-transform hover:scale-105">
-              <div className="h-48 bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-20 w-20 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-                  />
-                </svg>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  Cloud Storage Solution
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  A secure, scalable cloud storage platform with advanced
-                  encryption and file-sharing capabilities for businesses.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    AWS
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    Python
-                  </span>
-                  <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded text-xs">
-                    Docker
-                  </span>
-                </div>
-                <a
-                  href="#"
-                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                >
-                  View Project →
-                </a>
-              </div>
-            </div>
+            {projects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
+            ))}
           </div>
         </div>
       </section>
