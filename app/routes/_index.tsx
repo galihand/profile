@@ -178,7 +178,7 @@ export default function Index() {
       ),
       gradientFrom: '#3B82F6', // blue-500
       gradientTo: '#4F46E5', // indigo-600
-      skills: ['Remix', 'PostgreSQL', 'Cloudflare', 'PostHog'],
+      skills: ['Typescript', 'Remix', 'PostgreSQL'],
       projectUrl: 'https://cekplagiat.id',
     },
     {
