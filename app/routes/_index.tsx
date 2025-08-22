@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from '@remix-run/react';
 import { ExperienceCard } from '~/components/ExperienceCard';
 import { ProjectCard } from '~/components/ProjectCard';
+import { ExpertiseCard } from '~/components/ExpertiseCard';
 
 export const meta: MetaFunction = () => {
   return [
@@ -40,24 +41,27 @@ export default function Index() {
   const experiences = [
     {
       title: 'Software Engineer',
-      company: 'OxzTech',
+      company: 'OXZ Capital',
       companyDescription:
-        'OxzTech is, Fintech company that provides payment infrastructure',
+        'OXZ Capital is, a fintech company that provides payment infrastructure',
       period: 'Apr 2024 - Present',
       description: [
         'Developing an open banking platform for Vietnam&apos;s financial institutions to facilitate seamless money-in and money-out transactions.',
         'Optimizing payment processes to enhance speed and accuracy.',
         'Analyzing and reverse-engineering banking behaviors to improve user experience.',
+        'Working on payment gateway integration for multiple country and currency',
         'Collaborating closely with QA and PM to ensure delivered features meet expectations and function as intended.',
       ],
       skills: [
         'Typescript',
+        'Golang',
         'NestJS',
         'Puppeteer',
         'PostgreSQL',
         'AWS',
         'Redis',
         'Docker',
+        'SQS',
         'Appium',
       ],
     },
@@ -150,7 +154,7 @@ export default function Index() {
       projectUrl: 'https://movdir.netlify.app',
     },
     {
-      title: 'Turnidin',
+      title: 'Cek Plagiat',
       description:
         'Turnidin is a platform that allows users to check the plagiarism score of their papers. It runs on top of the Turnitin no-repository system, providing a seamless experience. Users simply need to top up their balance, upload their paper, and wait for a notification once the plagiarism report is ready.',
       icon: (
@@ -175,7 +179,7 @@ export default function Index() {
       gradientFrom: '#3B82F6', // blue-500
       gradientTo: '#4F46E5', // indigo-600
       skills: ['Remix', 'PostgreSQL', 'Cloudflare', 'PostHog'],
-      projectUrl: 'https://turnidin.com',
+      projectUrl: 'https://cekplagiat.id',
     },
     {
       title: 'Donasikacamata',
@@ -203,8 +207,74 @@ export default function Index() {
       ),
       gradientFrom: '#EAB308', // yellow-500
       gradientTo: '#CA8A04', // yellow-600
-      skills: ['Wordpress'],
+      skills: ['Wordpress', 'Project Management'],
       projectUrl: 'https://donasikacamata.com',
+    },
+  ];
+
+  const expertiseAreas = [
+    {
+      title: 'Front-end Development',
+      description:
+        'Not an expert, but I have a good understanding of the basics and can build simple web applications.',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          />
+        </svg>
+      ),
+      iconBgColor: 'bg-blue-100 dark:bg-blue-900',
+      iconTextColor: 'text-blue-600 dark:text-blue-400',
+      progressColor: 'bg-blue-600',
+      skills: [
+        { name: 'React', percentage: 50 },
+        { name: 'CSS/SCSS', percentage: 30 },
+        { name: 'TailwindCSS', percentage: 50 },
+        { name: 'Typescript', percentage: 80 },
+        { name: 'HTML', percentage: 80 },
+      ],
+    },
+    {
+      title: 'Back-end Development',
+      description:
+        'Building robust, scalable server-side applications and APIs with a focus on security and performance.',
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+          />
+        </svg>
+      ),
+      iconBgColor: 'bg-green-100 dark:bg-green-900',
+      iconTextColor: 'text-green-600 dark:text-green-400',
+      progressColor: 'bg-green-600',
+      skills: [
+        { name: 'Typescript', percentage: 90 },
+        { name: 'Golang', percentage: 45 },
+        { name: 'Python', percentage: 60 },
+        { name: 'AWS', percentage: 70 },
+        { name: 'Databases', percentage: 85 },
+        { name: 'Web scraping', percentage: 70 },
+      ],
     },
   ];
 
@@ -482,192 +552,10 @@ export default function Index() {
             <div className="mt-2 h-1 w-20 bg-blue-600 mx-auto"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Expertise 1 */}
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-blue-600 dark:text-blue-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                Front-end Development
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                Creating responsive, accessible, and performant user interfaces
-                using modern frameworks and best practices.
-              </p>
-              <div className="mt-4 space-y-2">
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    React
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-blue-600 h-2 rounded-full"
-                      style={{ width: '95%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    Vue.js
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-blue-600 h-2 rounded-full"
-                      style={{ width: '85%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    CSS/SCSS
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-blue-600 h-2 rounded-full"
-                      style={{ width: '90%' }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Expertise 2 */}
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md">
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-green-600 dark:text-green-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                Back-end Development
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                Building robust, scalable server-side applications and APIs with
-                a focus on security and performance.
-              </p>
-              <div className="mt-4 space-y-2">
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    Node.js
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-green-600 h-2 rounded-full"
-                      style={{ width: '90%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    Python
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-green-600 h-2 rounded-full"
-                      style={{ width: '80%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    Databases
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-green-600 h-2 rounded-full"
-                      style={{ width: '85%' }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Expertise 3 */}
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md">
-              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-purple-600 dark:text-purple-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                DevOps & Cloud
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                Implementing CI/CD pipelines, containerization, and cloud
-                infrastructure for reliable, scalable applications.
-              </p>
-              <div className="mt-4 space-y-2">
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    AWS
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-purple-600 h-2 rounded-full"
-                      style={{ width: '85%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    Docker
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-purple-600 h-2 rounded-full"
-                      style={{ width: '80%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-1/3 text-gray-600 dark:text-gray-400">
-                    CI/CD
-                  </span>
-                  <div className="w-2/3 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-purple-600 h-2 rounded-full"
-                      style={{ width: '75%' }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {expertiseAreas.map((expertise, index) => (
+              <ExpertiseCard key={index} {...expertise} />
+            ))}
           </div>
         </div>
       </section>
@@ -682,22 +570,22 @@ export default function Index() {
             <div className="mt-2 h-1 w-20 bg-blue-600 mx-auto"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="max-w-2xl mx-auto">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
                 Contact Information
               </h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-6">
-                Feel free to reach out if you&apos;re looking for a developer,
-                have a question, or just want to connect.
+              <p className="text-gray-700 dark:text-gray-300 mb-6 text-center">
+                Feel free to reach out if you&apos;re looking for a software
+                engineer, have a question, or just want to connect.
               </p>
 
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-600 dark:text-blue-400"
+                      className="h-6 w-6 text-blue-600 dark:text-blue-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -710,24 +598,24 @@ export default function Index() {
                       />
                     </svg>
                   </div>
-                  <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
+                  <div>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white mb-1">
                       Email
                     </p>
                     <a
                       href="mailto:andyangalih@gmail.com"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
                     >
                       andyangalih@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-600 dark:text-blue-400"
+                      className="h-6 w-6 text-blue-600 dark:text-blue-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -740,24 +628,24 @@ export default function Index() {
                       />
                     </svg>
                   </div>
-                  <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
+                  <div>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white mb-1">
                       Phone
                     </p>
                     <a
                       href="tel:+6281223538602"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+                      className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
                     >
                       +62 812 2353 8602
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mb-3">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 text-blue-600 dark:text-blue-400"
+                      className="h-6 w-6 text-blue-600 dark:text-blue-400"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -776,11 +664,11 @@ export default function Index() {
                       />
                     </svg>
                   </div>
-                  <div className="ml-4">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
+                  <div>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white mb-1">
                       Location
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300">
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">
                       Yogyakarta, Indonesia
                     </p>
                   </div>
@@ -788,10 +676,10 @@ export default function Index() {
               </div>
 
               <div className="mt-8">
-                <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+                <h4 className="text-lg font-medium text-gray-900 dark:text-white mb-4 text-center">
                   Connect with me
                 </h4>
-                <div className="flex space-x-4">
+                <div className="flex justify-center space-x-4">
                   <a
                     href="https://github.com/galihand"
                     className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
@@ -827,71 +715,6 @@ export default function Index() {
                 </div>
               </div>
             </div>
-
-            <div>
-              <form className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                  ></textarea>
-                </div>
-                <div>
-                  <button
-                    type="submit"
-                    className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
-            </div>
           </div>
         </div>
       </section>
@@ -900,10 +723,7 @@ export default function Index() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>
-              &copy; {new Date().getFullYear()} Galih Andyan. All rights
-              reserved.
-            </p>
+            <p>&copy; 2025 Galih Andyan. All rights reserved.</p>
           </div>
         </div>
       </footer>
